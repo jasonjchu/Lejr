@@ -10,6 +10,6 @@ public class Interac {
     private String token;
 
     public interface authorize(String accessId){
-        
+
     }
 }
