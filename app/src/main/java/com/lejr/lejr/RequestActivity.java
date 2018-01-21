@@ -15,8 +15,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
-import com.android.volley.Request;
-import com.android.volley.toolbox.StringRequest;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,8 +33,12 @@ public class RequestActivity extends AppCompatActivity {
     // putRequest() sends a receive money request to the specified email address with
     //  a specified amount of money
     // NEED TO FIX: currently does get request to obtain encrypted secret key
-    public void putRequest(){
-        System.out.println("okay");
+    public void putRequest(String sender, String recipient, float amount) throws JSONException {
+        JSONObject json = new JSONObject();
+        json.put("sender",sender);
+        json.put("recipient",recipient);
+        json.put("amount",amount);
+
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://gateway-web.beta.interac.ca/publicapi/api/v1/test/encrypted-key";
 
@@ -56,7 +60,7 @@ public class RequestActivity extends AppCompatActivity {
                 Map<String, String> headers = new HashMap<String, String>();
                 headers.put("thirdPartyAccessId", "CA1TA3saqsQ5jNyv");
                 headers.put("salt", "jason");
-                headers.put("secretKey", "RoAQ52B35imVY6mM-C05U35ze1AvJEYfgx0IwPqiNjI");
+                headers.put("secretKey", "70a4b45c-6348-43ad-84a6-543e2b516b9b");
                 return headers;
             }
 
@@ -86,7 +90,7 @@ public class RequestActivity extends AppCompatActivity {
         }
 
         if(valid){
-            putRequest();
+            //putRequest();
         }
     }
 }

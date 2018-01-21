@@ -1,9 +1,13 @@
 package com.lejr.lejr;
 
-/**
- * Created by Kalle on 2018-01-21.
- */
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-public class LedgerActivity {
+public class LedgerActivity extends AppCompatActivity {
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ledger);
+    }
 }
